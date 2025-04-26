@@ -34,11 +34,27 @@ body{
     max-width: 1200px;
     margin: 30px auto;
     padding: 10px 20px;
-    z-index: 1000;
+    z-index: 999;
     background-color: rgb(10, 25, 47, 0.9);
     border-radius: 4px;
     animation: backgroundchange 2s ease forwards;
 }
+
+/* .Growingbar{
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 10px 20px;
+    z-index: 1002;
+    background-color: rgb(10, 25, 47, 0.9);
+    border-radius: 4px;
+    animation: backgroundchange 2s ease forwards;
+
+} */
 
 .leftcontent{
     display: flex;
@@ -152,19 +168,19 @@ body{
     /* font-family: 'Raleway'; */
 }
 
+/* UNDER WORK */
 .content {
     display: flex;
     justify-content: center;
-    margin-top: 150px; /* Pushes content below the fixed top bar */
+    margin-top: 200px; /* Pushes content below the fixed top bar */
     height: 200vh; /* Makes the page 2x the screen height */
-    text-align: center;
     font-size: 24px;
     padding: 20px;
 }
 
-
-/* UNDER WORK */
+/* 
 .Model1 {
+    position: relative;
     display: grid;
     grid-template-rows: auto;
     height: 100%;
@@ -174,12 +190,39 @@ body{
 .trapez {
     display: flex;
     flex-wrap: wrap;
-    justify-self: center;
-    height: 300px;
-    width: 70%;
-    padding: 20px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 370px;
+    width: 80vw;  For responsive sizing/positioning, dont forget to use vw(viewpoint width) and vh(viewpoint height) */
+    /* padding: 20px;
     background-color: rgb(255, 255, 255, 0.3);
-    clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
+}  */
+
+/* Idea, each model will be blurred until scrolled onto. */
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    /* overflow: hidden; */
+    transform-style: preserve-3d;
+    transform: perspective(5000px);
 }
 
-/* For responsive sizing/positioning, dont forget to use vw(viewpoint width) and vh(viewpoint height) */
+img {
+    object-position: top;
+    object-fit: cover;
+    height: 325px;
+    width: 375px;
+    display: block;
+    transform: scale(1.2);
+    transition: transform 0.5s ease;
+    user-select: none;
+}
+
+.list .models:hover {
+    transform: scale(1.1);
+    z-index: 10;
+}
